@@ -4,13 +4,28 @@
 <title>BASIC SMP STORE</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
 <style>
 body{
     margin:0;
     font-family:Arial;
-    background: linear-gradient(135deg, #020617, #0f172a);
     color:white;
     text-align:center;
+    overflow-x:hidden;
+}
+
+/* 🌌 ULTRA BACKGROUND */
+#particles-js{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
+    url('https://images.alphacoders.com/133/1338394.png');
+    background-size:cover;
+    background-position:center;
+    z-index:-1;
 }
 
 /* BACK BUTTON */
@@ -25,14 +40,15 @@ body{
     font-weight:bold;
     transition:0.3s;
 }
-
 .back-btn:hover{
-    background:#16a34a;
+    box-shadow:0 0 15px #22c55e;
 }
 
 /* TITLE */
 h1{
     margin:20px;
+    font-size:35px;
+    text-shadow:0 0 25px #22c55e;
 }
 
 /* GRID */
@@ -42,34 +58,64 @@ h1{
     justify-content:center;
 }
 
-/* CARDS */
+/* 🔥 CARDS */
 .card{
-    background:#1e293b;
+    background: linear-gradient(135deg, rgba(34,197,94,0.15), rgba(59,130,246,0.15));
+    backdrop-filter: blur(12px);
     padding:25px;
     margin:15px;
     border-radius:15px;
     width:250px;
     cursor:pointer;
     transition:0.3s;
-    box-shadow:0 0 15px rgba(0,255,100,0.1);
+    position:relative;
 }
 
-/* HOVER GLOW */
+.card::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    background:linear-gradient(45deg,#22c55e,#3b82f6,#a855f7,#22c55e);
+    border-radius:15px;
+    z-index:-1;
+    opacity:0;
+    transition:0.4s;
+}
+
+.card:hover::before{
+    opacity:1;
+}
+
 .card:hover{
-    transform:translateY(-8px) scale(1.03);
-    box-shadow:0 0 25px rgba(34,197,94,0.7);
+    transform:translateY(-10px) scale(1.05);
+    box-shadow:0 0 40px #22c55e;
 }
 
 /* DETAILS */
 .details{
     display:none;
     margin-top:20px;
-    animation:fadeIn 0.4s ease;
+    padding:20px;
+    border-radius:12px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    box-shadow:0 0 20px rgba(34,197,94,0.5);
 }
 
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(10px);}
-    to{opacity:1; transform:translateY(0);}
+/* BUY BUTTON */
+.buy-btn{
+    margin-top:5px;
+    background:#22c55e;
+    padding:6px 12px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    color:white;
+    transition:0.3s;
+}
+.buy-btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 15px #22c55e;
 }
 
 /* POPUP */
@@ -82,8 +128,7 @@ h1{
     padding:25px;
     border-radius:15px;
     display:none;
-    box-shadow:0 0 30px rgba(34,197,94,0.7);
-    animation:fadeIn 0.4s;
+    box-shadow:0 0 40px #22c55e;
 }
 
 .popup button{
@@ -95,12 +140,17 @@ h1{
     border-radius:6px;
     cursor:pointer;
 }
+
+@media(max-width:600px){
+    .card{ width:90%; }
+}
 </style>
 </head>
 
 <body>
 
-<!-- BACK BUTTON -->
+<div id="particles-js"></div>
+
 <div class="back-btn" onclick="goBack()">⬅ Back</div>
 
 <h1>🛒 BASIC SMP STORE</h1>
@@ -109,18 +159,22 @@ h1{
 
 <div class="card" onclick="showDetails('ranks')">
 <h2>👑 Ranks</h2>
+<p style="color:#22c55e;">💎 Premium Perks</p>
 </div>
 
 <div class="card" onclick="showDetails('keys')">
 <h2>🔑 Keys</h2>
+<p style="color:#facc15;">🎁 Crate Rewards</p>
 </div>
 
 <div class="card" onclick="showPopup('coins')">
 <h2>🪙 Coins</h2>
+<p style="color:#38bdf8;">💰 Economy System</p>
 </div>
 
 <div class="card" onclick="showPopup('tags')">
 <h2>🏷 Tags</h2>
+<p style="color:#f97316;">🔥 Stylish Names</p>
 </div>
 
 </div>
@@ -128,54 +182,78 @@ h1{
 <!-- DETAILS -->
 <div id="ranks" class="details">
 <h2>👑 RANK SHOP</h2>
-<p>VIP — ₹69</p>
-<p>VIP+ — ₹169</p>
-<p>UltraVIP — ₹269</p>
-<p>MegaVIP — ₹369</p>
-<p>Hero — ₹469</p>
-<p>Legend — ₹569</p>
+<p>VIP — ₹69 <button class="buy-btn" onclick="buyRank()">Buy</button></p>
+<p>VIP+ — ₹169 <button class="buy-btn" onclick="buyRank()">Buy</button></p>
+<p>UltraVIP — ₹269 <button class="buy-btn" onclick="buyRank()">Buy</button></p>
+<p>MegaVIP — ₹369 <button class="buy-btn" onclick="buyRank()">Buy</button></p>
+<p>Hero — ₹469 <button class="buy-btn" onclick="buyRank()">Buy</button></p>
+<p>Legend — ₹569 <button class="buy-btn" onclick="buyRank()">Buy</button></p>
 </div>
 
 <div id="keys" class="details">
 <h2>🔑 CRATE SHOP</h2>
-<p>Verse — ₹69</p>
-<p>Mythic — ₹59</p>
-<p>Ace — ₹49</p>
-<p>Nova — ₹39</p>
-<p>Spawner — ₹79</p>
-<p>Party — ₹39</p>
+<p>Verse — ₹69 <button class="buy-btn" onclick="buyKeys()">Buy</button></p>
+<p>Mythic — ₹59 <button class="buy-btn" onclick="buyKeys()">Buy</button></p>
+<p>Ace — ₹49 <button class="buy-btn" onclick="buyKeys()">Buy</button></p>
+<p>Nova — ₹39 <button class="buy-btn" onclick="buyKeys()">Buy</button></p>
+<p>Spawner — ₹79 <button class="buy-btn" onclick="buyKeys()">Buy</button></p>
+<p>Party — ₹39 <button class="buy-btn" onclick="buyKeys()">Buy</button></p>
 </div>
 
 <!-- POPUP -->
 <div id="popup" class="popup">
 <p id="popupText"></p>
-<button onclick="openDiscord()">Discord</button>
+<button onclick="openDiscord()">Join Discord</button>
 <br><br>
 <button onclick="closePopup()">Close</button>
 </div>
 
 <script>
 
+/* 🔥 PRO PARTICLES */
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 120 },
+    color: { value: ["#22c55e","#3b82f6","#a855f7"] },
+    shape: { type: "circle" },
+    opacity: { value: 0.6, random: true },
+    size: { value: 4, random: true },
+    move: {
+      enable: true,
+      speed: 1,
+      random: true,
+      out_mode: "out"
+    },
+    line_linked: { enable: false }
+  },
+  interactivity: {
+    events: {
+      onhover: { enable: true, mode: "repulse" }
+    },
+    modes: {
+      repulse: { distance: 120 }
+    }
+  },
+  retina_detect: true
+});
+
+/* NAV */
 function goBack(){
-    window.location.href = "index.html";
+    window.location.href="index.html";
 }
 
+/* DETAILS */
 function showDetails(id){
     document.getElementById("ranks").style.display="none";
     document.getElementById("keys").style.display="none";
-
     document.getElementById(id).style.display="block";
 }
 
+/* POPUP */
 function showPopup(type){
-    let text="";
-
-    if(type==="tags"){
-        text="🏷 Tags Coming Soon<br><br>For more information Join our Discord";
-    }
-    else if(type==="coins"){
-        text="🪙 Coins Shop Coming Soon<br><br>For more information Join our Discord";
-    }
+    let text = type==="tags"
+    ? "🏷 Tags Coming Soon<br><br>Join Discord to buy"
+    : "🪙 Coins Coming Soon<br><br>Join Discord to buy";
 
     document.getElementById("popupText").innerHTML=text;
     document.getElementById("popup").style.display="block";
@@ -185,6 +263,13 @@ function closePopup(){
     document.getElementById("popup").style.display="none";
 }
 
+/* DISCORD */
+function buyRank(){
+    window.open("https://discord.gg/V4MwgvyqfD");
+}
+function buyKeys(){
+    window.open("https://discord.gg/YZRt9zMRSU");
+}
 function openDiscord(){
     window.open("https://discord.gg/YZRt9zMRSU");
 }
