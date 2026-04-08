@@ -8,7 +8,12 @@
         body {
             margin: 0;
             font-family: Arial;
-            background: linear-gradient(135deg, #020617, #0f172a);
+            background:
+            linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
+            url('https://images2.alphacoders.com/140/thumb-1920-1405583.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
             animation: fadeIn 1s ease;
         }
@@ -263,7 +268,6 @@ document.addEventListener("click", function(){
     audio.volume = 0.3;
     audio.play();
 
-    // 🔥 PERFECT LOOP FIX
     audio.addEventListener("ended", function(){
         audio.currentTime = 0;
         audio.play();
