@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BASIC SMP STORE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background: linear-gradient(135deg, #020617, #0f172a);
+    color:white;
+    text-align:center;
+}
+
+/* BACK BUTTON */
+.back-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+    background:#22c55e;
+    padding:8px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#16a34a;
+}
+
+/* TITLE */
+h1{
+    margin:20px;
+}
+
+/* GRID */
+.grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+/* CARDS */
+.card{
+    background:#1e293b;
+    padding:25px;
+    margin:15px;
+    border-radius:15px;
+    width:250px;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 0 15px rgba(0,255,100,0.1);
+}
+
+/* HOVER GLOW */
+.card:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 0 25px rgba(34,197,94,0.7);
+}
+
+/* DETAILS */
+.details{
+    display:none;
+    margin-top:20px;
+    animation:fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* POPUP */
+.popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+    display:none;
+    box-shadow:0 0 30px rgba(34,197,94,0.7);
+    animation:fadeIn 0.4s;
+}
+
+.popup button{
+    margin-top:10px;
+    background:#22c55e;
+    border:none;
+    padding:10px 15px;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACK BUTTON -->
+<div class="back-btn" onclick="goBack()">⬅ Back</div>
+
+<h1>🛒 BASIC SMP STORE</h1>
+
+<div class="grid">
+
+<div class="card" onclick="showDetails('ranks')">
+<h2>👑 Ranks</h2>
+</div>
+
+<div class="card" onclick="showDetails('keys')">
+<h2>🔑 Keys</h2>
+</div>
+
+<div class="card" onclick="showPopup('coins')">
+<h2>🪙 Coins</h2>
+</div>
+
+<div class="card" onclick="showPopup('tags')">
+<h2>🏷 Tags</h2>
+</div>
+
+</div>
+
+<!-- DETAILS -->
+<div id="ranks" class="details">
+<h2>👑 RANK SHOP</h2>
+<p>VIP — ₹69</p>
+<p>VIP+ — ₹169</p>
+<p>UltraVIP — ₹269</p>
+<p>MegaVIP — ₹369</p>
+<p>Hero — ₹469</p>
+<p>Legend — ₹569</p>
+</div>
+
+<div id="keys" class="details">
+<h2>🔑 CRATE SHOP</h2>
+<p>Verse — ₹69</p>
+<p>Mythic — ₹59</p>
+<p>Ace — ₹49</p>
+<p>Nova — ₹39</p>
+<p>Spawner — ₹79</p>
+<p>Party — ₹39</p>
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+<p id="popupText"></p>
+<button onclick="openDiscord()">Discord</button>
+<br><br>
+<button onclick="closePopup()">Close</button>
+</div>
+
+<script>
+
+function goBack(){
+    window.location.href = "index.html";
+}
+
+function showDetails(id){
+    document.getElementById("ranks").style.display="none";
+    document.getElementById("keys").style.display="none";
+
+    document.getElementById(id).style.display="block";
+}
+
+function showPopup(type){
+    let text="";
+
+    if(type==="tags"){
+        text="🏷 Tags Coming Soon<br><br>For more information Join our Discord";
+    }
+    else if(type==="coins"){
+        text="🪙 Coins Shop Coming Soon<br><br>For more information Join our Discord";
+    }
+
+    document.getElementById("popupText").innerHTML=text;
+    document.getElementById("popup").style.display="block";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display="none";
+}
+
+function openDiscord(){
+    window.open("https://discord.gg/YZRt9zMRSU");
+}
+
+</script>
+
+</body>
+</html>
