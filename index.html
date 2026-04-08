@@ -215,17 +215,50 @@ function sendMessage() {
     let chatBox = document.getElementById("chatBox");
     let msg = input.value.toLowerCase();
 
-    chatBox.innerHTML += "<p>🧑 " + msg + "</p>";
+    if(msg.trim() === "") return;
 
-    let reply = "🎮 Try mining & crafting bro 😎";
+    chatBox.innerHTML += `<p>🧑 ${msg}</p>`;
 
-    if(msg.includes("diamond")) reply = "💎 Mine at Y -58 bro!";
-    if(msg.includes("nether")) reply = "🔥 Take armor & food!";
-    if(msg.includes("dragon")) reply = "🐉 Destroy crystals first!";
+    let reply = "😎 Explore the server bro!";
 
-    chatBox.innerHTML += "<p>🤖 SatyamPlayz AI: " + reply + "</p>";
+    if(msg.includes("hi") || msg.includes("hello")) {
+        reply = "👋 Hello Gamer! Welcome to Basic SMP!";
+    }
+    else if(msg.includes("ip")) {
+        reply = "🌍 Server IP: play.basicsmp.in";
+    }
+    else if(msg.includes("join")) {
+        reply = "🔥 Open Minecraft → Multiplayer → Add Server → Enter IP!";
+    }
+    else if(msg.includes("discord")) {
+        reply = "💬 Join Discord: https://discord.gg/YZRt9zMRSU";
+    }
+    else if(msg.includes("owner")) {
+        reply = "👑 Owner is Pawan (Basic Gamerz)";
+    }
+    else if(msg.includes("diamond")) {
+        reply = "💎 Mine at Y -58!";
+    }
+    else if(msg.includes("nether")) {
+        reply = "🔥 Take armor & food!";
+    }
+    else if(msg.includes("dragon")) {
+        reply = "🐉 Destroy crystals first!";
+    }
+    else if(msg.includes("bye")) {
+        reply = "👋 Bye gamer!";
+    }
+
+    chatBox.innerHTML += `<p>🤖 Satyam AI: ${reply}</p>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
 
     input.value = "";
+}document.getElementById("userInput").addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        sendMessage();
+    }
+});
+}
 }
 </script>
 
