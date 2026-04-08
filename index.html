@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minecraft Hub - SatyamPlayz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            color: white;
+        }
+
+        header {
+            background: linear-gradient(90deg, #22c55e, #4ade80);
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 0 20px #22c55e;
+        }
+
+        nav {
+            background: #16a34a;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: url('https://wallpapercave.com/wp/wp2757874.jpg');
+            background-size: cover;
+        }
+
+        .btn {
+            background: #22c55e;
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        section {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        input {
+            padding: 10px;
+            width: 70%;
+            border-radius: 5px;
+            border: none;
+        }
+
+        footer {
+            background: #020617;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    🎮 Basic SMP
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Server</a>
+    <a href="#">Mods</a>
+    <a href="#">Plugins</a>
+</nav>
+
+<div class="hero">
+    <h1>🔥 Join the Best Minecraft Server</h1>
+</div>
+
+<section>
+    <div class="card">
+        <h2>💬 Discord</h2>
+        <a href="https://discord.gg/YZRt9zMRSU" target="_blank" class="btn">Join Discord</a>
+        
+    </div>
+
+    <div class="card">
+        <h2>🌍 Server Info</h2>
+        <p><b>Java IP:</b> play.basicsmp.in</p>
+        <p><b>Bedrock IP:</b> play.basicsmp.in</p>
+        <p><b>Port:</b> 25565</p>
+        <p><b>Status:</b> Online</p>
+    </div>
+
+    <div class="card">
+        <h2>👑 Owner Info</h2>
+        <p><b>Name:</b> pawan</p>
+        <p><b>Age:</b> apke hisab se dekh lena</p>
+        <p><b>YouTube Channel:</b> Basic Gamerz</p>
+        <p><b>Link:</b> <a href="https://youtube.com/@basicgamerz-0?si=vX2McnzL1B8b8IlM" target="_blank">Open Channel</a></p>
+        <p><b>Second Channel:</b> Not Basic Gamerz</p>
+        <p><b>Link:</b> <a href="https://youtube.com/@notbasicgamerz?si=CSsSuvWDtMACLooI" target="_blank">Open Channel</a></p>
+        <p><b>Business Gmail:</b> basicgamerzsbusiness@gmail.com</p>
+        <p><b>More Info:</b></p>
+        <p><a href="https://guns.lol/basicgamerz" target="_blank">All Social Media</a></p>
+    </div>
+
+    <div class="card">
+        <h2>⚙️ Mods - Make Your Mods</h2>
+        <input type="text" id="modInput" placeholder="e.g. one block mod">
+        <button class="btn" onclick="makeMod()">Create</button>
+        <p id="modResult"></p>
+    </div>
+
+    <div class="card">
+        <h2>🔌 Plugins - Make Your Plugins</h2>
+        <input type="text" id="pluginInput" placeholder="e.g. one block plugin">
+        <button class="btn" onclick="makePlugin()">Create</button>
+        <p id="pluginResult"></p>
+    </div>
+</section>
+
+<!-- Sneak Peeks Section -->
+<section>
+    <div class="card" style="width:90%; max-width:800px; text-align:center;">
+        <h2>👀 Sneak Peeks</h2>
+        <p>Check out some server builds 🔥</p>
+        <div>
+            <img src="2026-02-09_14.06.45.png" width="200" onclick="openViewer(0)">
+            <img src="2026-02-13_18.00.13.png" width="200" onclick="openViewer(1)">
+            <img src="2026-02-12_15.14.42.png" width="200" onclick="openViewer(2)">
+            <img src="2026-02-12_15.26.05.png" width="200" onclick="openViewer(3)">
+        </div>
+    </div>
+</section>
+
+<!-- Image Viewer -->
+<div id="viewer" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; text-align:center;">
+    <span onclick="closeViewer()" style="color:white; font-size:30px; cursor:pointer;">✖</span>
+    <img id="viewerImg" style="max-width:90%; max-height:90%; margin-top:20px;">
+</div>
+
+<section>
+    <div class="card" style="width:90%; max-width:600px;">
+        <h2>🤖 SatyamPlayz AI Assistant</h2>
+        <div id="chatBox" style="height:200px; overflow-y:auto; background:#020617; padding:10px;"></div>
+        <input type="text" id="userInput" placeholder="Ask Minecraft...">
+        <button onclick="sendMessage()" class="btn">Send</button>
+    </div>
+</section>
+
+<script>
+let images = [
+"2026-02-09_14.06.45.png",
+"2026-02-13_18.00.13.png",
+"2026-02-12_15.14.42.png",
+"2026-02-12_15.26.05.png"
+];
+
+function openViewer(index){
+    document.getElementById("viewer").style.display = "block";
+    document.getElementById("viewerImg").src = images[index];
+}
+
+function closeViewer(){
+    document.getElementById("viewer").style.display = "none";
+}
+
+function makeMod() {
+    let input = document.getElementById("modInput").value.toLowerCase();
+    let result = document.getElementById("modResult");
+
+    if(input.includes("one block")) {
+        result.innerHTML = "🧱 One Block Mod: Break 1 block → random items drop!";
+    } else if(input.includes("shield")) {
+        result.innerHTML = "🛡️ Low Shield Mod: Shield durability reduced + faster break!";
+    } else {
+        result.innerHTML = "⚙️ Custom mod idea generated! (Basic preview only)";
+    }
+}
+
+function makePlugin() {
+    let input = document.getElementById("pluginInput").value.toLowerCase();
+    let result = document.getElementById("pluginResult");
+
+    if(input.includes("one block")) {
+        result.innerHTML = "🔌 One Block Plugin: Player spawns on 1 block world.";
+    } else {
+        result.innerHTML = "🔧 Plugin idea ready! (You can code this in Java + Spigot)";
+    }
+}
+
+function sendMessage() {
+    let input = document.getElementById("userInput");
+    let chatBox = document.getElementById("chatBox");
+    let msg = input.value.toLowerCase();
+
+    chatBox.innerHTML += "<p>🧑 " + msg + "</p>";
+
+    let reply = "🎮 Try mining & crafting bro 😎";
+
+    if(msg.includes("diamond")) reply = "💎 Mine at Y -58 bro!";
+    if(msg.includes("nether")) reply = "🔥 Take armor & food!";
+    if(msg.includes("dragon")) reply = "🐉 Destroy crystals first!";
+
+    chatBox.innerHTML += "<p>🤖 SatyamPlayz AI: " + reply + "</p>";
+
+    input.value = "";
+}
+</script>
+
+<footer>
+    © 2026 SatyamPlayz
+</footer>
+
+</body>
+</html>
