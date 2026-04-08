@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Basic Smp</title>
+    <title>BASIC SMP - Best Minecraft Server</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -10,260 +10,258 @@
             font-family: Arial;
             background: linear-gradient(135deg, #020617, #0f172a);
             color: white;
+            animation: fadeIn 1s ease;
         }
 
-        header {
-            background: linear-gradient(90deg, #22c55e, #4ade80);
-            padding: 20px;
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            box-shadow: 0 0 20px #22c55e;
+        @keyframes fadeIn{
+            from{opacity:0;}
+            to{opacity:1;}
         }
 
-        nav {
-            background: #16a34a;
-            padding: 12px;
-            text-align: center;
+        .navbar {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:15px 25px;
+            background: rgba(2,6,23,0.8);
+            backdrop-filter: blur(10px);
+            border-bottom:1px solid rgba(255,255,255,0.1);
         }
 
-        nav a {
-            color: white;
-            margin: 15px;
-            text-decoration: none;
-            font-weight: bold;
+        .logo {
+            display:flex;
+            align-items:center;
+            gap:10px;
+            font-weight:bold;
+            font-size:20px;
+            text-transform: uppercase;
         }
 
-        nav a:hover {
-            text-shadow: 0 0 10px #22c55e;
+        .logo img { height:35px; }
+
+        .nav-links a {
+            margin: 0 15px;
+            text-decoration:none;
+            color:white;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        .nav-links a:hover { 
+            color:#22c55e;
+            text-shadow:0 0 10px #22c55e;
+        }
+
+        .top-banner {
+            margin:20px;
+            padding:15px;
+            border-radius:12px;
+            background: rgba(34,197,94,0.15);
+            border:1px solid rgba(34,197,94,0.4);
+            display:flex;
+            justify-content:space-between;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown{
+            from{transform:translateY(-20px); opacity:0;}
+            to{transform:translateY(0); opacity:1;}
+        }
+
+        .top-banner button {
+            background:#22c55e;
+            border:none;
+            padding:8px 15px;
+            border-radius:6px;
+            color:white;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .top-banner button:hover{
+            box-shadow:0 0 10px #22c55e;
         }
 
         .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: url('https://wallpapercave.com/wp/wp2757874.jpg');
-            background-size: cover;
+            text-align:center;
+            padding:60px 20px;
+            background:url('https://wallpapercave.com/wp/wp2757874.jpg');
+            background-size:cover;
+        }
+
+        .hero h1{
+            animation: glowText 2s infinite alternate;
+        }
+
+        @keyframes glowText{
+            from{text-shadow:0 0 10px #22c55e;}
+            to{text-shadow:0 0 25px #22c55e;}
         }
 
         .btn {
-            background: #22c55e;
-            padding: 10px 20px;
-            border-radius: 8px;
-            color: white;
-            text-decoration: none;
-            margin-top: 10px;
-            display: inline-block;
-            transition: 0.3s;
+            background:#22c55e;
+            padding:10px 20px;
+            border-radius:8px;
+            border:none;
+            color:white;
+            cursor:pointer;
+            transition:0.3s;
         }
 
-        .btn:hover {
-            background: #16a34a;
-            transform: scale(1.05);
+        .btn:hover{
+            transform:scale(1.05);
+            box-shadow:0 0 15px #22c55e;
         }
 
         section {
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            padding:20px;
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
         }
 
+        /* 🔥 MAIN GLOW EFFECT */
         .card {
-            background: #1e293b;
-            padding: 20px;
-            margin: 10px;
-            border-radius: 10px;
-            width: 300px;
-            box-shadow: 0 0 15px rgba(0,255,100,0.2);
-            transition: 0.3s;
+            background:#1e293b;
+            padding:20px;
+            margin:10px;
+            border-radius:12px;
+            width:320px;
+            transition:0.3s;
+            box-shadow:0 0 15px rgba(0,255,100,0.1);
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .card:hover{
+            transform:translateY(-8px) scale(1.03);
+            box-shadow:0 0 30px rgba(34,197,94,0.8);
         }
 
-        input {
-            padding: 10px;
-            width: 70%;
-            border-radius: 5px;
-            border: none;
-            outline: none;
-        }
-
-        img {
-            border-radius: 8px;
-            cursor: pointer;
-            margin: 5px;
-        }
+        .server-box span { color:#22c55e; font-weight:bold; }
 
         footer {
-            background: #020617;
-            text-align: center;
-            padding: 10px;
+            background:#020617;
+            text-align:center;
+            padding:10px;
+        }
+
+        /* OWNER ORIGINAL */
+        .label { color:#22c55e; font-weight:bold; }
+        .main-owner { color:#60a5fa; font-weight:bold; }
+        .second-owner { color:#f97316; font-weight:bold; }
+        .btn-link {
+            display:block; padding:8px; margin:5px 0;
+            border-radius:6px; text-decoration:none; font-weight:bold;
+            transition:0.3s;
+        }
+
+        .btn-link:hover{
+            transform:scale(1.05);
+            box-shadow:0 0 10px #22c55e;
+        }
+
+        .yt1 { background:rgba(239,68,68,0.2); color:#ef4444; }
+        .yt2 { background:rgba(34,197,94,0.2); color:#22c55e; }
+        .social { background:rgba(56,189,248,0.2); color:#38bdf8; }
+        .email { color:#eab308; font-weight:bold; }
+
+        /* POPUP */
+        #copyPopup {
+            position:fixed;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            background:#1e293b;
+            padding:15px 25px;
+            border-radius:10px;
+            display:none;
+            box-shadow:0 0 25px rgba(34,197,94,0.9);
+            font-weight:bold;
+            z-index:9999;
         }
     </style>
 </head>
 
 <body>
 
-<header>🎮 Basic SMP</header>
+<div class="navbar">
+    <div class="logo">
+        <img src="logo.png">
+        BASIC SMP
+    </div>
 
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Server</a>
-    <a href="#">Mods</a>
-    <a href="#">Plugins</a>
-</nav>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="https://discord.gg/YZRt9zMRSU" target="_blank">Discord</a>
+        <a href="store.html" target="_blank">Store</a>
+    </div>
+</div>
+
+<div class="top-banner">
+    <div>🔥 Season 3 Live — Survival + Lifesteal Mode!</div>
+    <button onclick="copyIP()">Copy IP</button>
+</div>
 
 <div class="hero">
     <h1>🔥 Join the Best Minecraft Server</h1>
+    <button class="btn" onclick="copyIP()">Play Now</button>
 </div>
 
 <section>
-    <div class="card">
-        <h2>💬 Discord</h2>
-        <a href="https://discord.gg/YZRt9zMRSU" target="_blank" class="btn">Join Discord</a>
-    </div>
 
-    <div class="card">
-        <h2>🌍 Server Info</h2>
-        <p><b>Java IP:</b> play.basicsmp.in</p>
-        <p><b>Bedrock IP:</b> play.basicsmp.in</p>
-        <p><b>Port:</b> 25565</p>
-        <p><b>Status:</b> Online</p>
-    </div>
+<div class="card server-box">
+    <h2>🌍 Server Info</h2>
+    <p><span>Java IP:</span> play.basicsmp.in</p>
+    <p><span>Bedrock IP:</span> play.basicsmp.in</p>
+    <p><span>Port:</span> 25565</p>
+    <p><span>Status:</span> 🟢 Online</p>
 
-   <div class="card">
+    <button class="btn" onclick="copyIP()">Copy IP</button>
+</div>
+
+<div class="card">
     <h2>👑 Owner Info</h2>
-    <p><b>Main Owner:</b> MrFables Gamer</p>
-    <p><b>Second Owner:</b> Pawan (Basic Gamerz)</p>
 
-    <p><b>YouTube Channel:</b></p>
-    <p><a href="https://youtube.com/@basicgamerz-0" target="_blank">Basic Gamerz</a></p>
+    <p><span class="label">💰 Main Owner:</span> 
+    <span class="main-owner">MrFables Gamer</span></p>
 
-    <p><b>Second Channel:</b></p>
-    <p><a href="https://youtube.com/@notbasicgamerz" target="_blank">Not Basic Gamerz</a></p>
+    <p><span class="label">🎮 Second Owner:</span> 
+    <span class="second-owner">Basic Gamerz</span></p>
 
-    <p><b>All Social Media:</b></p>
-    <p><a href="https://guns.lol/basicgamerz" target="_blank">Click Here</a></p>
-
-    <p><b>Business Gmail:</b></p>
-    <p>basicgamerzsbusiness@gmail.com</p>
-
-    <hr>
-
-    <h3>💻 Developer</h3>
-    <p><b>Name:</b> Mrcreepy</p>
+    <a href="https://www.youtube.com/@basicsmp25565" target="_blank" class="btn-link yt1">🎬 Basic Smp Youtube</a>
+    <a href="https://www.instagram.com/basicsmp?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-link yt2">🅾 BASIC SMP INSTA</a>
+     <a href="https://youtube.com/@notbasicgamerz" target="_blank" class="btn-link yt2">🟢 Not Basic Gamerz</a>
+   
+    <p class="email">play.basicsmp.fun@gmail.com</p>
 </div>
 
-    <div class="card">
-        <h2>⚙️ Mods</h2>
-        <input type="text" id="modInput" placeholder="e.g. one block mod">
-        <button class="btn" onclick="makeMod()">Create</button>
-        <p id="modResult"></p>
-    </div>
-
-    <div class="card">
-        <h2>🔌 Plugins</h2>
-        <input type="text" id="pluginInput" placeholder="e.g. plugin">
-        <button class="btn" onclick="makePlugin()">Create</button>
-        <p id="pluginResult"></p>
-    </div>
 </section>
 
-<section>
-    <div class="card" style="width:90%; max-width:800px; text-align:center;">
-        <h2>👀 Sneak Peeks</h2>
-        <img src="img1.png" width="200" onclick="openViewer(0)">
-        <img src="img2.png" width="200" onclick="openViewer(1)">
-        <img src="img3.png" width="200" onclick="openViewer(2)">
-        <img src="img4.png" width="200" onclick="openViewer(3)">
-    </div>
-</section>
-
-<div id="viewer" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; text-align:center;">
-    <span onclick="closeViewer()" style="color:white; font-size:30px; cursor:pointer;">✖</span>
-    <img id="viewerImg" style="max-width:90%; max-height:90%; margin-top:20px;">
-</div>
-
-<section>
-    <div class="card" style="width:90%; max-width:600px;">
-        <h2>🤖 Satyam AI</h2>
-        <div id="chatBox" style="height:200px; overflow-y:auto; background:#020617; padding:10px;"></div>
-        <input type="text" id="userInput" placeholder="Ask anything...">
-        <button onclick="sendMessage()" class="btn">Send</button>
-    </div>
-</section>
-
-<script>
-let images = [
-"img1.png",
-"img2.png",
-"img3.png",
-"img4.png"
-];
-
-function openViewer(index){
-    document.getElementById("viewer").style.display = "block";
-    document.getElementById("viewerImg").src = images[index];
-}
-
-function closeViewer(){
-    document.getElementById("viewer").style.display = "none";
-}
-
-function makeMod() {
-    let input = document.getElementById("modInput").value.toLowerCase();
-    let result = document.getElementById("modResult");
-
-    if(input.includes("one block")) {
-        result.innerHTML = "🧱 One Block Mod: Random drops!";
-    } else {
-        result.innerHTML = "⚙️ Custom mod idea!";
-    }
-}
-
-function makePlugin() {
-    document.getElementById("pluginResult").innerHTML = "🔌 Plugin idea ready!";
-}
-
-function sendMessage() {
-    let input = document.getElementById("userInput");
-    let chatBox = document.getElementById("chatBox");
-    let msg = input.value.toLowerCase();
-
-    if(msg.trim() === "") return;
-
-    chatBox.innerHTML += `<p>🧑 ${msg}</p>`;
-
-    let reply = "😎 Explore the server bro!";
-
-    if(msg.includes("hi") || msg.includes("hello")) reply = "👋 Hello Gamer!";
-    else if(msg.includes("ip")) reply = "🌍 play.basicsmp.in";
-    else if(msg.includes("join")) reply = "🔥 Add server and join!";
-    else if(msg.includes("discord")) reply = "💬 discord.gg/YZRt9zMRSU";
-    else if(msg.includes("diamond")) reply = "💎 Mine at Y -58!";
-    else if(msg.includes("nether")) reply = "🔥 Take armor & food!";
-    else if(msg.includes("dragon")) reply = "🐉 Destroy crystals first!";
-    else if(msg.includes("owner")) reply = "👑 Owner is Pawan";
-    else if(msg.includes("bye")) reply = "👋 Bye gamer!";
-
-    chatBox.innerHTML += `<p>🤖 Satyam AI: ${reply}</p>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    input.value = "";
-}
-
-document.getElementById("userInput").addEventListener("keypress", function(e){
-    if(e.key === "Enter"){
-        sendMessage();
-    }
-});
-</script>
+<div id="copyPopup">✅ IP Copied!</div>
 
 <footer>
-    © 2026 SatyamPlayz
+    © 2026 BASIC SMP | Made by SatyamPlayz 🎮
 </footer>
+
+<script>
+function copyIP(){
+    let text = "play.basicsmp.in";
+
+    let input = document.createElement("input");
+    input.value = text;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    document.body.removeChild(input);
+
+    let popup = document.getElementById("copyPopup");
+    popup.innerHTML = "✅ IP Copied: " + text;
+    popup.style.display = "block";
+
+    setTimeout(() => {
+        popup.style.display = "none";
+    }, 5000);
+}
+</script>
 
 </body>
 </html>
