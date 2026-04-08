@@ -180,6 +180,11 @@
 
 <body>
 
+<!-- 🎵 BGM -->
+<audio id="bgm">
+    <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
 <div class="navbar">
     <div class="logo">
         <img src="logo.png">
@@ -219,19 +224,18 @@
     <h2>👑 OwnerS Info</h2>
 
     <p><span class="label">💰 Main Owner:</span> 
-    <span class="main-owner">MrFables</span></p>
+    <span class="main-owner">MrFables Gamer</span></p>
 
     <p><span class="label">🎮 Second Owner:</span> 
     <span class="second-owner">Basic Gamerz</span></p>
 
     <a href="https://www.youtube.com/@basicsmp25565" target="_blank" class="btn-link yt1">🎬 Basic Smp Youtube</a>
-    <a href="https://www.instagram.com/basicsmp?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-link yt2">🅾 BASIC SMP INSTA</a>
+    <a href="https://www.instagram.com/basicsmp" target="_blank" class="btn-link yt2">🅾 BASIC SMP INSTA</a>
     <a href="https://youtube.com/@notbasicgamerz" target="_blank" class="btn-link yt2">🟢 Not Basic Gamerz</a>
 
     <p class="email">play.basicsmp.fun@gmail.com</p>
 </div>
 
-<!-- ✅ NEW DEVELOPERS INFO -->
 <div class="card">
     <h2>💻 Developers Info</h2>
 
@@ -253,6 +257,20 @@
 </footer>
 
 <script>
+let audio = document.getElementById("bgm");
+
+document.addEventListener("click", function(){
+    audio.volume = 0.3;
+    audio.play();
+
+    // 🔥 PERFECT LOOP FIX
+    audio.addEventListener("ended", function(){
+        audio.currentTime = 0;
+        audio.play();
+    });
+
+}, { once: true });
+
 function copyIP(){
     let text = "play.basicsmp.in";
 
