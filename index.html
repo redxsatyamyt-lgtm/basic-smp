@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Minecraft Hub - SatyamPlayz</title>
+    <title>Basic Smp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             margin: 0;
@@ -33,6 +34,10 @@
             font-weight: bold;
         }
 
+        nav a:hover {
+            text-shadow: 0 0 10px #22c55e;
+        }
+
         .hero {
             text-align: center;
             padding: 60px 20px;
@@ -48,6 +53,12 @@
             text-decoration: none;
             margin-top: 10px;
             display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #16a34a;
+            transform: scale(1.05);
         }
 
         section {
@@ -63,6 +74,12 @@
             margin: 10px;
             border-radius: 10px;
             width: 300px;
+            box-shadow: 0 0 15px rgba(0,255,100,0.2);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         input {
@@ -70,6 +87,13 @@
             width: 70%;
             border-radius: 5px;
             border: none;
+            outline: none;
+        }
+
+        img {
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
         }
 
         footer {
@@ -82,9 +106,7 @@
 
 <body>
 
-<header>
-    🎮 Basic SMP
-</header>
+<header>🎮 Basic SMP</header>
 
 <nav>
     <a href="#">Home</a>
@@ -101,7 +123,6 @@
     <div class="card">
         <h2>💬 Discord</h2>
         <a href="https://discord.gg/YZRt9zMRSU" target="_blank" class="btn">Join Discord</a>
-        
     </div>
 
     <div class="card">
@@ -115,46 +136,36 @@
     <div class="card">
         <h2>👑 Owner Info</h2>
         <p><b>Name:</b> pawan</p>
-        <p><b>Age:</b> apke hisab se dekh lena</p>
         <p><b>YouTube Channel:</b> Basic Gamerz</p>
-        <p><b>Link:</b> <a href="https://youtube.com/@basicgamerz-0?si=vX2McnzL1B8b8IlM" target="_blank">Open Channel</a></p>
-        <p><b>Second Channel:</b> Not Basic Gamerz</p>
-        <p><b>Link:</b> <a href="https://youtube.com/@notbasicgamerz?si=CSsSuvWDtMACLooI" target="_blank">Open Channel</a></p>
+        <p><a href="https://youtube.com/@basicgamerz-0" target="_blank">Open Channel</a></p>
         <p><b>Business Gmail:</b> basicgamerzsbusiness@gmail.com</p>
-        <p><b>More Info:</b></p>
-        <p><a href="https://guns.lol/basicgamerz" target="_blank">All Social Media</a></p>
     </div>
 
     <div class="card">
-        <h2>⚙️ Mods - Make Your Mods</h2>
+        <h2>⚙️ Mods</h2>
         <input type="text" id="modInput" placeholder="e.g. one block mod">
         <button class="btn" onclick="makeMod()">Create</button>
         <p id="modResult"></p>
     </div>
 
     <div class="card">
-        <h2>🔌 Plugins - Make Your Plugins</h2>
-        <input type="text" id="pluginInput" placeholder="e.g. one block plugin">
+        <h2>🔌 Plugins</h2>
+        <input type="text" id="pluginInput" placeholder="e.g. plugin">
         <button class="btn" onclick="makePlugin()">Create</button>
         <p id="pluginResult"></p>
     </div>
 </section>
 
-<!-- Sneak Peeks Section -->
 <section>
     <div class="card" style="width:90%; max-width:800px; text-align:center;">
         <h2>👀 Sneak Peeks</h2>
-        <p>Check out some server builds 🔥</p>
-        <div>
-            <img src="2026-02-09_14.06.45.png" width="200" onclick="openViewer(0)">
-            <img src="2026-02-13_18.00.13.png" width="200" onclick="openViewer(1)">
-            <img src="2026-02-12_15.14.42.png" width="200" onclick="openViewer(2)">
-            <img src="2026-02-12_15.26.05.png" width="200" onclick="openViewer(3)">
-        </div>
+        <img src="2026-02-09_14.06.45.png" width="200" onclick="openViewer(0)">
+        <img src="2026-02-13_18.00.13.png" width="200" onclick="openViewer(1)">
+        <img src="2026-02-12_15.14.42.png" width="200" onclick="openViewer(2)">
+        <img src="2026-02-12_15.26.05.png" width="200" onclick="openViewer(3)">
     </div>
 </section>
 
-<!-- Image Viewer -->
 <div id="viewer" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; text-align:center;">
     <span onclick="closeViewer()" style="color:white; font-size:30px; cursor:pointer;">✖</span>
     <img id="viewerImg" style="max-width:90%; max-height:90%; margin-top:20px;">
@@ -162,9 +173,9 @@
 
 <section>
     <div class="card" style="width:90%; max-width:600px;">
-        <h2>🤖 SatyamPlayz AI Assistant</h2>
+        <h2>🤖 Satyam AI</h2>
         <div id="chatBox" style="height:200px; overflow-y:auto; background:#020617; padding:10px;"></div>
-        <input type="text" id="userInput" placeholder="Ask Minecraft...">
+        <input type="text" id="userInput" placeholder="Ask anything...">
         <button onclick="sendMessage()" class="btn">Send</button>
     </div>
 </section>
@@ -191,23 +202,14 @@ function makeMod() {
     let result = document.getElementById("modResult");
 
     if(input.includes("one block")) {
-        result.innerHTML = "🧱 One Block Mod: Break 1 block → random items drop!";
-    } else if(input.includes("shield")) {
-        result.innerHTML = "🛡️ Low Shield Mod: Shield durability reduced + faster break!";
+        result.innerHTML = "🧱 One Block Mod: Random drops!";
     } else {
-        result.innerHTML = "⚙️ Custom mod idea generated! (Basic preview only)";
+        result.innerHTML = "⚙️ Custom mod idea!";
     }
 }
 
 function makePlugin() {
-    let input = document.getElementById("pluginInput").value.toLowerCase();
-    let result = document.getElementById("pluginResult");
-
-    if(input.includes("one block")) {
-        result.innerHTML = "🔌 One Block Plugin: Player spawns on 1 block world.";
-    } else {
-        result.innerHTML = "🔧 Plugin idea ready! (You can code this in Java + Spigot)";
-    }
+    document.getElementById("pluginResult").innerHTML = "🔌 Plugin idea ready!";
 }
 
 function sendMessage() {
@@ -221,45 +223,27 @@ function sendMessage() {
 
     let reply = "😎 Explore the server bro!";
 
-    if(msg.includes("hi") || msg.includes("hello")) {
-        reply = "👋 Hello Gamer! Welcome to Basic SMP!";
-    }
-    else if(msg.includes("ip")) {
-        reply = "🌍 Server IP: play.basicsmp.in";
-    }
-    else if(msg.includes("join")) {
-        reply = "🔥 Open Minecraft → Multiplayer → Add Server → Enter IP!";
-    }
-    else if(msg.includes("discord")) {
-        reply = "💬 Join Discord: https://discord.gg/YZRt9zMRSU";
-    }
-    else if(msg.includes("owner")) {
-        reply = "👑 Owner is Pawan (Basic Gamerz)";
-    }
-    else if(msg.includes("diamond")) {
-        reply = "💎 Mine at Y -58!";
-    }
-    else if(msg.includes("nether")) {
-        reply = "🔥 Take armor & food!";
-    }
-    else if(msg.includes("dragon")) {
-        reply = "🐉 Destroy crystals first!";
-    }
-    else if(msg.includes("bye")) {
-        reply = "👋 Bye gamer!";
-    }
+    if(msg.includes("hi") || msg.includes("hello")) reply = "👋 Hello Gamer!";
+    else if(msg.includes("ip")) reply = "🌍 play.basicsmp.in";
+    else if(msg.includes("join")) reply = "🔥 Add server and join!";
+    else if(msg.includes("discord")) reply = "💬 discord.gg/YZRt9zMRSU";
+    else if(msg.includes("diamond")) reply = "💎 Mine at Y -58!";
+    else if(msg.includes("nether")) reply = "🔥 Take armor & food!";
+    else if(msg.includes("dragon")) reply = "🐉 Destroy crystals first!";
+    else if(msg.includes("owner")) reply = "👑 Owner is Pawan";
+    else if(msg.includes("bye")) reply = "👋 Bye gamer!";
 
     chatBox.innerHTML += `<p>🤖 Satyam AI: ${reply}</p>`;
     chatBox.scrollTop = chatBox.scrollHeight;
 
     input.value = "";
-}document.getElementById("userInput").addEventListener("keypress", function(e){
+}
+
+document.getElementById("userInput").addEventListener("keypress", function(e){
     if(e.key === "Enter"){
         sendMessage();
     }
 });
-}
-}
 </script>
 
 <footer>
