@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BASIC SMP - Best Minecraft Server</title>
+    <title>Basic SMP Season 3 🔥</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
     <style>
+.status-glow {
+    font-weight: bold;
+    animation: glowStatus 1.5s infinite alternate;
+}
+
+@keyframes glowStatus {
+    from { text-shadow: 0 0 5px #22c55e; }
+    to { text-shadow: 0 0 20px #22c55e; }
+}
+
+.status-offline {
+    color: red;
+    animation: glowOffline 1.5s infinite alternate;
+}
+
+@keyframes glowOffline {
+    from { text-shadow: 0 0 5px red; }
+    to { text-shadow: 0 0 20px red; }
+}
         body {
             margin: 0;
             font-family: Arial;
             background:
-            linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
-            url('https://images2.alphacoders.com/140/thumb-1920-1405583.png');
+            linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)),
+            url('./bg.png'); /*(same image but better look) */
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             background-attachment: fixed;
             color: white;
             animation: fadeIn 1s ease;
+        }
+
+        #particles-js{
+            position:fixed;
+            width:100%;
+            height:100%;
+            top:0;
+            left:0;
+            z-index:-1;
         }
 
         @keyframes fadeIn{
@@ -42,7 +73,31 @@
             text-transform: uppercase;
         }
 
-        .logo img { height:35px; }
+        /* LOGO */
+        ./logo img {
+            height:35px;
+            filter: drop-shadow(0 0 5px #22c55e);
+            animation: logoGlow 2s infinite alternate;
+        }
+
+        /* VERSE LOGO */
+        .small-logo{
+            height:22px;
+            vertical-align:middle;
+            margin-left:5px;
+            filter: drop-shadow(0 0 6px #3b82f6);
+            animation: verseGlow 2s infinite alternate;
+        }
+
+        @keyframes logoGlow{
+            from{ filter: drop-shadow(0 0 5px #22c55e); }
+            to{ filter: drop-shadow(0 0 15px #22c55e); }
+        }
+
+        @keyframes verseGlow{
+            from{ filter: drop-shadow(0 0 5px #3b82f6); }
+            to{ filter: drop-shadow(0 0 15px #3b82f6); }
+        }
 
         .nav-links a {
             margin: 0 15px;
@@ -151,9 +206,14 @@
         .label { color:#22c55e; font-weight:bold; }
         .main-owner { color:#60a5fa; font-weight:bold; }
         .second-owner { color:#f97316; font-weight:bold; }
+
         .btn-link {
-            display:block; padding:8px; margin:5px 0;
-            border-radius:6px; text-decoration:none; font-weight:bold;
+            display:block;
+            padding:8px;
+            margin:5px 0;
+            border-radius:6px;
+            text-decoration:none;
+            font-weight:bold;
             transition:0.3s;
         }
 
@@ -185,14 +245,16 @@
 
 <body>
 
-<!-- 🎵 BGM -->
+<div id="particles-js"></div>
+
 <audio id="bgm">
     <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
 <div class="navbar">
     <div class="logo">
-        <img src="logo.png">
+        <!-- -->
+        <img src="./logo.png"class="small-logo">
         BASIC SMP
     </div>
 
@@ -209,7 +271,7 @@
 </div>
 
 <div class="hero">
-    <h1>🔥 Join the Best Minecraft Server</h1>
+    <h1>Join Basic SMP Season 3 🔥</h1>
     <button class="btn" onclick="copyIP()">Play Now</button>
 </div>
 
@@ -220,7 +282,15 @@
     <p><span>Java IP:</span> play.basicsmp.in</p>
     <p><span>Bedrock IP:</span> play.basicsmp.in</p>
     <p><span>Port:</span> 25565</p>
-    <p><span>Status:</span> 🟢 Online</p>
+   <p><span>Status:</span> <span id="serverStatus" class="status-glow">Checking...</span></p>
+<p><span>Players Online:</span> <span id="playerCount">Loading...</span></p>
+
+    <p>
+        <span>Powered By:</span> Verse Node 
+        <img src="./verse.png" class="small-logo">
+    </p>
+
+    <a href="https://discord.gg/b293yKRx" target="_blank" class="btn-link social">Join Discord</a>
 
     <button class="btn" onclick="copyIP()">Copy IP</button>
 </div>
@@ -256,12 +326,42 @@
 </section>
 
 <div id="copyPopup">✅ IP Copied!</div>
+<script>
+function loadPlayers(){
+    fetch("https://api.mcsrvstat.us/2/play.basicsmp.in")
+    .then(res => res.json())
+    .then(data => {
+        if(data.online){
+            document.getElementById("playerCount").innerHTML =
+                "👥 " + data.players.online + " / " + data.players.max
+        } else {
+            document.getElementById("playerCount").innerHTML = "Server Offline";
+        }
+    })
+    .catch(() => {
+        document.getElementById("playerCount").innerHTML = "Error";
+    });
+}
 
+// auto refresh every 30 sec
+setInterval(loadPlayers, 30000);
+loadPlayers();
+</script>
 <footer>
     © 2026 BASIC SMP | Made by SatyamPlayz 🎮
 </footer>
 
 <script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 90 },
+    color: { value: ["#22c55e","#3b82f6"] },
+    size: { value: 3, random: true },
+    move: { speed: 1 },
+    line_linked: { enable: false }
+  }
+});
+
 let audio = document.getElementById("bgm");
 
 document.addEventListener("click", function(){
@@ -293,6 +393,36 @@ function copyIP(){
         popup.style.display = "none";
     }, 5000);
 }
+</script>
+<script>
+async function fetchServerData() {
+    try {
+        let res = await fetch("https://api.mcsrvstat.us/2/play.basicsmp.in");
+        let data = await res.json();
+
+        let statusEl = document.getElementById("serverStatus");
+        let playerEl = document.getElementById("playerCount");
+
+        if (data.online) {
+            statusEl.innerHTML = "🟢 Online";
+            statusEl.classList.remove("status-offline");
+
+            playerEl.innerHTML = data.players.online + " / " + data.players.max;
+        } else {
+            statusEl.innerHTML = "🔴 Offline";
+            statusEl.classList.add("status-offline");
+
+            playerEl.innerHTML = "0";
+        }
+    } catch (err) {
+        document.getElementById("serverStatus").innerHTML = "Error";
+        document.getElementById("playerCount").innerHTML = "N/A";
+    }
+}
+
+// Refresh every 10 seconds
+fetchServerData();
+setInterval(fetchServerData, 10000);
 </script>
 
 </body>
